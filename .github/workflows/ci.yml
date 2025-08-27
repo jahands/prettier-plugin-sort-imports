@@ -3,7 +3,7 @@ on:
     pull_request:
     push:
         branches:
-            - main
+            - fork
 
 jobs:
     build:
@@ -21,7 +21,7 @@ jobs:
               with:
                   node-version: ${{ matrix.node }}
                   cache: 'pnpm'
-            - run: pnpm install
+            - run: pnpm install --frozen-lockfile --child-concurrency=10
             - name: Build
               run: pnpm compile
             - name: Test

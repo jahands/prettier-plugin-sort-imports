@@ -1,3 +1,11 @@
+## PERSONAL FORK OF [@ianvs/prettier-plugin-sort-imports](https://www.npmjs.com/package/@ianvs/prettier-plugin-sort-imports) <!-- omit in toc -->
+
+Forked to keep [this fix](https://github.com/IanVS/prettier-plugin-sort-imports/pull/234#issuecomment-3201325121) (that got reverted) so that I can continue using this plugin with [prettier-plugin-toml](https://www.npmjs.com/package/prettier-plugin-toml) until an upstream fix is implemented.
+
+My original fix got reverted (for good reason) and I don't have time to try other fixes right now, so I'm going to maintain a fork for now.
+
+---
+
 # Prettier plugin sort imports <!-- omit in toc -->
 
 A prettier plugin to sort import declarations by provided Regular Expression order, while preserving side-effect import order.
