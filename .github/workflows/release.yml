@@ -7,7 +7,9 @@ on:
 jobs:
   create-release-pr:
     name: Create Release PR
-    runs-on: ubuntu-latest
+    runs-on:
+      - self-hosted
+      - X64
     permissions:
       contents: write
       pull-requests: write
