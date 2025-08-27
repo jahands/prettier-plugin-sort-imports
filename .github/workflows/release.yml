@@ -1,39 +1,39 @@
 name: Release
 
 on:
-  push:
-    branches: ['fork']
+    push:
+        branches: ['fork']
 
 jobs:
-  create-release-pr:
-    name: Create Release PR
-    runs-on:
-      - self-hosted
-      - X64
-    permissions:
-      contents: write
-      pull-requests: write
-      actions: write
-    timeout-minutes: 5
-    concurrency: ${{ github.workflow }}-create-release-pr
-    steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v4
-      - uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: 1.2.20
-      - uses: pnpm/action-setup@v4
-      - name: Setup Node.js lts
-        uses: actions/setup-node@v4
-        with:
-          node-version: lts/*
-      - name: Install Dependencies
-        run: pnpm install --frozen-lockfile --child-concurrency=10
-      - name: Create Release Pull Request
-        id: create-release-pr
-        uses: changesets/action@v1
-        with:
-          publish: pnpm changeset publish
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+    create-release-pr:
+        name: Create Release PR
+        runs-on:
+            - self-hosted
+            - X64
+        permissions:
+            contents: write
+            pull-requests: write
+            actions: write
+        timeout-minutes: 5
+        concurrency: ${{ github.workflow }}-create-release-pr
+        steps:
+            - name: Checkout Repo
+              uses: actions/checkout@v4
+            - uses: oven-sh/setup-bun@v2
+              with:
+                  bun-version: 1.2.20
+            - uses: pnpm/action-setup@v4
+            - name: Setup Node.js lts
+              uses: actions/setup-node@v4
+              with:
+                  node-version: lts/*
+            - name: Install Dependencies
+              run: pnpm install --frozen-lockfile --child-concurrency=10
+            - name: Create Release Pull Request
+              id: create-release-pr
+              uses: changesets/action@v1
+              with:
+                  publish: pnpm changeset publish
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

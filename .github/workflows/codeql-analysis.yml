@@ -24,8 +24,8 @@ jobs:
     analyze:
         name: Analyze
         runs-on:
-        - self-hosted
-        - X64
+            - self-hosted
+            - X64
         permissions:
             actions: read
             contents: read
